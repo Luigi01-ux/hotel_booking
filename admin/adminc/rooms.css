@@ -1,0 +1,162 @@
+/* ========== General Styles ========== */
+body {
+    font-family: 'Inter', sans-serif;
+    background-image: url('roomsimg.jpg');
+    background-color: #f2f4f7;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+/* ========== Header and Navigation ========== */
+a {
+    display: inline-block;
+    margin: 25px 0 10px 40px;
+    color: #0d6efd;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #084298;
+    transform: translateX(-3px);
+}
+
+/* ========== Page Title ========== */
+h3 {
+    text-align: center;
+    font-size: 2rem;
+    color: #1f1f1f;
+    margin: 10px 0 25px 0;
+    font-weight: 600;
+}
+
+/* ========== Form Container ========== */
+form {
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency for background */
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 45px;
+    border-radius: 16px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+form:hover {
+    box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== Form Labels & Inputs ========== */
+label {
+    display: block;
+    font-weight: 600;
+    color: #3c3c3c;
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    border: 1.5px solid #d6d8dc;
+    border-radius: 10px;
+    font-size: 15px;
+    background-color: #f9fafb;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #0d6efd;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(13, 110, 253, 0.3);
+    outline: none;
+}
+
+/* ========== Section Titles ========== */
+h4 {
+    margin-top: 25px;
+    font-size: 1.2rem;
+    color: #212529;
+    font-weight: 600;
+    border-left: 4px solid #0d6efd;
+    padding-left: 10px;
+}
+
+/* ========== Checkbox Containers ========== */
+#featuresContainer,
+#facilitiesContainer {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 25px;
+    max-height: 220px;
+    overflow-y: auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+#featuresContainer label,
+#facilitiesContainer label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#featuresContainer label:hover,
+#facilitiesContainer label:hover {
+    background: #e9f1ff;
+    border-radius: 6px;
+    transform: scale(1.02);
+}
+
+/* Scrollbar Customization */
+#featuresContainer::-webkit-scrollbar,
+#facilitiesContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+#featuresContainer::-webkit-scrollbar-thumb,
+#facilitiesContainer::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 4px;
+}
+
+/* ========== Submit Button ========== */
+button {
+    width: 100%;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    padding: 14px 0;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
