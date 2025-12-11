@@ -6,3 +6,4 @@
 <link rel="stylesheet" href="adminc/facilities.css">
 <link rel="stylesheet" href="adminc/rooms.css">
 <link rel="stylesheet" href="adminc/messages.css">
+<link rel="stylesheet" href="adminc/booked.css">

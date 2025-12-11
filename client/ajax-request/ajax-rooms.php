@@ -1,7 +1,7 @@
 <?php
 require('../../config.php'); 
 
-<a href="index.php" class="btn-back">← Back</a>
+    
 
 $sql = "SELECT r.id, r.name, r.photo_path, r.description, r.price_per_night, 
                GROUP_CONCAT(DISTINCT f.name) AS features, 

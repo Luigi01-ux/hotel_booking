@@ -1,94 +1,73 @@
+<?php
+session_start();
+require('../config.php'); // <-- add ../ to go up one level
+ // Make sure this path is correct
+
+// Optional: Only allow admin to view this page
+// if($_SESSION['usertype_id'] != 1) {
+//     header("Location: index.php");
+//     exit;
+// }
+
+// Fetch all bookings with user and room info
+$query = "
+    SELECT b.id, l.username, r.name AS room_name, pm.name AS payment_method,
+           b.check_in, b.check_out, b.price
+    FROM bookings b
+    INNER JOIN login l ON b.login_id = l.id
+    INNER JOIN rooms r ON b.room_id = r.id
+    INNER JOIN payment_method pm ON b.payment_method_id = pm.id
+    ORDER BY b.id DESC
+";
+
+$result = mysqli_query($conn, $query);
+?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Booked Rooms</title>
-    <link rel="stylesheet" href="style.css"> <!-- link your CSS file -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f8fa;
-            margin: 0;
-            padding: 0;
-        }
-        h1 {
-            background-color: #2d89ef;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        table {
-            width: 90%;
-            margin: 30px auto;
-            border-collapse: collapse;
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        th, td {
-            padding: 12px;
-            text-align: center;
-            border-bottom: 1px solid #ccc;
-        }
-        th {
-            background-color: #4a90e2;
-            color: white;
-        }
-        tr:hover {
-            background-color: #f2f2f2;
-        }
-        .back-link {
-            display: block;
-            text-align: center;
-            margin: 20px;
-        }
-        .back-link a {
-            color: #2d89ef;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .back-link a:hover {
-            text-decoration: underline;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booked Rooms</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="adminc/features.css">
 </head>
-<body>
-    <h1>Booked Rooms</h1>
+<body class="bg-light">
 
-    <table>
-        <tr>
-            <th>#</th>
-            <th>Guest Name</th>
-            <th>Room</th>
-            <th>Check-In</th>
-            <th>Check-Out</th>
-            <th>Status</th>
-        </tr>
-
-        <?php
-        if ($result->num_rows > 0) {
-            $count = 1;
-            while($row = $result->fetch_assoc()) {
-                echo "<tr>
-                        <td>" . $count++ . "</td>
-                        <td>" . $row['guest_name'] . "</td>
-                        <td>" . $row['room_name'] . "</td>
-                        <td>" . $row['check_in'] . "</td>
-                        <td>" . $row['check_out'] . "</td>
-                        <td><span style='color:green; font-weight:bold;'>" . $row['status'] . "</span></td>
-                      </tr>";
+<div class="container my-5">
+    <h2 class="mb-4">Booked Rooms</h2>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>User</th>
+                <th>Room</th>
+                <th>Payment Method</th>
+                <th>Check-in</th>
+                <th>Check-out</th>
+                <th>Price (₱)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if($result && mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_assoc($result)){
+                    echo "<tr>
+                            <td>{$row['id']}</td>
+                            <td>{$row['username']}</td>
+                            <td>{$row['room_name']}</td>
+                            <td>{$row['payment_method']}</td>
+                            <td>{$row['check_in']}</td>
+                            <td>{$row['check_out']}</td>
+                            <td>{$row['price']}</td>
+                          </tr>";
+                }
+            } else {
+                echo "<tr><td colspan='7' class='text-center'>No bookings found</td></tr>";
             }
-        } else {
-            echo "<tr><td colspan='6'>No booked rooms found.</td></tr>";
-        }
-        ?>
+            ?>
+        </tbody>
     </table>
+</div>
 
-    <div class="back-link">
-        <a href="index.php">← Back to Admin Dashboard</a><br><br>
-    </div>
 </body>
 </html>
-
-<?php
-$conn->close();
-?>
