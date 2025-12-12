@@ -62,7 +62,7 @@ require('config.php');
 
     <!-- check availability form -->
 
-    <div class="container availability-form">
+  <div class="container availability-form">
     <div class="row">
         <div class="col-lg-12 bg-white shadow p-4 rounded">
             <h5 class="mb-4">Check Booking Availability</h5>

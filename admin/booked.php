@@ -28,8 +28,11 @@ $result = mysqli_query($conn, $query);
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Booked Rooms</title>
+<a href="index.php" class="btn btn-secondary mb-3" style="background-color: #007bff; border-color: #007bff;">
+    ← Back
+</a>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="adminc/features.css">
+<link rel="stylesheet" href="adminc/booked.css">
 </head>
 <body class="bg-light">
 
